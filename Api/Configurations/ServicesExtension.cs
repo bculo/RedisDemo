@@ -12,7 +12,7 @@ namespace Api.Configurations
             services.AddCors();
 
             var configList = typeof(IInstaller).Assembly.GetExportedTypes()
-                .Where(item => !item.IsAbstract && !item.IsInterface && typeof(IInstaller).IsAssignableFrom(item))
+                .Where(item => typeof(IInstaller).IsAssignableFrom(item) && !item.IsAbstract && !item.IsInterface)
                 .Select(Activator.CreateInstance)
                 .Cast<IInstaller>()
                 .ToList();
