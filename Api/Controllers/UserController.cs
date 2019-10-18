@@ -1,6 +1,8 @@
 ﻿using Api.Dtos;
 using Api.Filters;
 using Api.Interfaces;
+using Api.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -11,23 +13,26 @@ namespace Api.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _service;
-        public UserController(IUserService service)
+        private readonly IMapper _mapper;
+
+        public UserController(IUserService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string userId)
         {
             var user = await _service.GetUser(userId ?? string.Empty);
-            return Ok(new UserDTO { UserName = user.UserName, Age = user.Age, Email = user.Email });
+            return Ok(_mapper.Map<UserDTO>(user));
         }
 
         [HttpPost]
         [ValidateModelFilter]
         public async Task<IActionResult> Post([FromBody] UserDTO model)
         {
-            await _service.AddUser(model.UserName, model.Age, model.Email);
+            await _service.AddUser(_mapper.Map<User>(model));
             return Ok();
         }
 

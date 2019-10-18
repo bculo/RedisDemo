@@ -20,19 +20,12 @@ namespace Api.Services
             _options = options.Value;
         }
 
-        public async Task AddUser(string username, int age, string email)
+        public async Task AddUser(User user)
         {
-            if (GetUser(username) != null)
+            if (GetUser(user.UserName) != null)
                 throw new Exception("User already exist");
 
-            var user = new User
-            {
-                Age = age,
-                Email = email,
-                UserName = username
-            };
-
-            await _cache.SetStringAsync(username.ToLower(), JsonConvert.SerializeObject(user), GetCacheOptions());
+            await _cache.SetStringAsync(user.UserName.ToLower(), JsonConvert.SerializeObject(user), GetCacheOptions());
         }
 
         public async Task<User> GetUser(string username)
