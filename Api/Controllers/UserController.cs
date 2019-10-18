@@ -1,10 +1,12 @@
 ﻿using Api.Dtos;
+using Api.Filters;
 using Api.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Api.Controllers
 {
+    [ErrorFilter]
     [Route("api/[controller]")]
     public class UserController : Controller
     {
@@ -22,6 +24,7 @@ namespace Api.Controllers
         }
 
         [HttpPost]
+        [ValidateModelFilter]
         public async Task<IActionResult> Post([FromBody] UserDTO model)
         {
             await _service.AddUser(model.UserName, model.Age, model.Email);
