@@ -1,6 +1,6 @@
 ﻿namespace Api.Options
 {
-    public class SwaggerOptions
+    public sealed class SwaggerOptions
     {
         public string JsonRoute { get; set; }
         public string Description { get; set; }
