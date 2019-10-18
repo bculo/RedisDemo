@@ -22,15 +22,16 @@ namespace Api.Services
 
         public async Task AddUser(User user)
         {
-            if (GetUser(user.UserName) != null)
-                throw new Exception("User already exist");
-
             await _cache.SetStringAsync(user.UserName.ToLower(), JsonConvert.SerializeObject(user), GetCacheOptions());
         }
 
         public async Task<User> GetUser(string username)
         {
             var json = await _cache.GetStringAsync(username.ToLower());
+
+            if (string.IsNullOrEmpty(json))
+                return null;
+
             return JsonConvert.DeserializeObject<User>(json);
         }
 

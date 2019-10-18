@@ -21,10 +21,14 @@ namespace Api.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string userId)
+        [HttpGet("{userName}")]
+        public async Task<IActionResult> Get(string userName)
         {
-            var user = await _service.GetUser(userId ?? string.Empty);
+            var user = await _service.GetUser(userName ?? string.Empty);
+
+            if (user == null)
+                return BadRequest("User doesnt exist");
+
             return Ok(_mapper.Map<UserDTO>(user));
         }
 
@@ -36,10 +40,10 @@ namespace Api.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string userId)
+        [HttpDelete("{userName}")]
+        public async Task<IActionResult> Delete(string userName)
         {
-            await _service.RemoveUser(userId);
+            await _service.RemoveUser(userName ?? "");
             return Ok();
         }
     }
