@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Api.Options
+﻿namespace Api.Options
 {
-    public sealed class RedisOptions
+    public sealed class RedisOptions : CacheOptions
     {
         public string Connection { get; set; }
 

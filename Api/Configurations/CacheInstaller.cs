@@ -15,6 +15,8 @@ namespace Api.Configurations
                 options.Configuration = cache.Connection;
                 options.InstanceName = cache.InstanceName;
             });
+
+            services.Configure<RedisOptions>(configuration.GetSection(nameof(RedisOptions)));
         }
     }
 }
