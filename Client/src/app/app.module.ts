@@ -9,6 +9,9 @@ import { AddComponent } from './components/add/add.component';
 import { GetComponent } from './components/get/get.component';
 import { RemoveComponent } from './components/remove/remove.component';
 import { SimpleButtonComponent } from './shared/ui-components/simple-button/simple-button.component';
+import { InputComponent } from './shared/ui-components/input/input.component';
+import { SplitComponent } from './shared/ui-components/split/split.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,15 @@ import { SimpleButtonComponent } from './shared/ui-components/simple-button/simp
     AddComponent,
     GetComponent,
     RemoveComponent,
-    SimpleButtonComponent
+    SimpleButtonComponent,
+    InputComponent,
+    SplitComponent,        
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

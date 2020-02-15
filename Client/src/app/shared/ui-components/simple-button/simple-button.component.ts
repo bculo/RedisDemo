@@ -10,13 +10,8 @@ export class SimpleButtonComponent implements OnInit {
   @Input() content: string;
   @Output() click: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-
-  }
-
-  print(): void{
-  }
+  ngOnInit() {}
 
 }

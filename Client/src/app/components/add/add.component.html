@@ -1,6 +1,14 @@
 <div>
-    <p>add works!</p>
-    <app-simple-button [content]="test"></app-simple-button>
+    <form class="form-style">
+        <h1 class="align-both">NEW USER</h1>
+        <app-split></app-split>
+        <app-input [label]="'Mail'" [placeholder]="'person email'" [type]="'text'" [id]="'mail'"></app-input>
+        <app-split></app-split>
+        <app-input [label]="'Age'" [placeholder]="'person age'" [type]="'number'" [id]="'age'"></app-input>
+        <app-split></app-split>
+        <app-input [label]="'UserName'" [placeholder]="'person name'" [type]="'text'" [id]="'name'"></app-input>
+        <app-split></app-split>
+        <app-split></app-split>
+        <app-simple-button [content]="'ADD'"></app-simple-button>
+    </form>
 </div>
-
-
