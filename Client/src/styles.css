@@ -11,6 +11,10 @@
     --redis-color: #D83027;
 }
 
+.content-contatiner{
+    margin: 0 15%;
+}
+
 .align-both{
     display: flex;
     justify-content: center;

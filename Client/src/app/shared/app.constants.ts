@@ -1,5 +1,5 @@
 export const API_USER_ROUTES = {
-    getById: '',
-    add: '',
-    delete: '',
+    getById: '/api/user/get',
+    add: '/api/user/post',
+    delete: '/api/user/delete',
 };
